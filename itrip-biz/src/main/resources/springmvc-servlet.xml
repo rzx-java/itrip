@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+    <!--配置控制器  -->
+    <!-- 	<bean name="/index" class="com.mvc.controller.HomeController"></bean> -->
+    <!-- 扫描包，实现注解驱动Bean的定义，同时将Bean自动注入容器中使用，使标注了SpringMvc注解的Bean生效 -->
+    <context:component-scan base-package="com.itrip.biz.controller"></context:component-scan>
+    <!--一键式配置:通过注解的方式进行Spring MVC开发  -->
+    <!-- 配置<mvc:annotation-driven/>完成对@Controller和@RequestMapping等注解的支持 -->
+    <mvc:annotation-driven/>
+    <!--配置视图解析器  -->
+    <!-- 处理请求后需要渲染输出，这个任务由视图实现（此处为jsp）,需要确定指定的请求需要使用哪个视图进行请求结果的渲染输出 -->
+    <!-- DispatcherServlet会查找到一个视图解析器，将控制器返回的逻辑视图名称转换成渲染结果的实际视图 -->
+    <!-- 如下面定义的视图解析器，通过配置prefix(前缀)和suffix(后缀)将视图逻辑名解析为/WEB-INF/jsp/<viewName>.jsp -->
+<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>-->
+    <!-- 配置静态资源路径和映射 -->
+   <!-- <mvc:resources location="/statics/" mapping="/statics/**"/>-->
+    <!--上传文件路径  -->
+<!--    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="5242880"></property>
+        <property name="defaultEncoding" value="UTF-8"></property>
+    </bean>-->
+    <!--配置拦截器  -->
+    <!--<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/sys/**"/>
+            <bean class="com.sm.interceptor.SysInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+</beans>
